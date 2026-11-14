@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: product-service
+  # Default: in-memory H2 so the project runs with zero setup.
+  # Use --spring.profiles.active=mysql to switch to MySQL (see application-mysql.yml).
+  datasource:
+    url: jdbc:h2:mem:productdb
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+
+eureka:
+  instance:
+    # Register by IP so lookups do not depend on the machine's hostname resolving.
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
